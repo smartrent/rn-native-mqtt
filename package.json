@@ -5,10 +5,10 @@
   "description": "An MQTT client or React Native that actually works with a simple Javascript interface",
   "main": "./lib/index.js",
   "types": "./types/index.d.ts",
-  "homepage": "https://github.com/davesters/rn-native-mqtt",
+  "homepage": "https://github.com/FrozenPyrozen/rn-native-mqtt",
   "repository": {
     "type": "git",
-    "url": "https://github.com/davesters/rn-native-mqtt"
+    "url": "https://github.com/FrozenPyrozen/rn-native-mqtt"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
@@ -23,8 +23,8 @@
     "typescript"
   ],
   "author": {
-    "name": "David Corona",
-    "username": "davesters"
+    "name": "David Corona, Kirill Kohan",
+    "username": "davesters, FrozenPyrozen"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE.md",
