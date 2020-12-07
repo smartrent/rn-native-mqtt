@@ -7,7 +7,7 @@ const { NativeMqtt } = NativeModules;
 const mqttEventEmitter = new NativeEventEmitter(NativeMqtt);
 
 export interface TlsOptions {
-	caDer?: Buffer;
+	caDer?: String;
 	cert?: string;
 	key?: string;
 	p12?: Buffer;
