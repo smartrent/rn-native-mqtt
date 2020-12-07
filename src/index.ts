@@ -111,11 +111,6 @@ export class Client {
 			opts.tls.p12 = opts.tls.p12.toString('base64') as any;
 		}
 
-		if (opts.tls && opts.tls.caDer) {
-			opts.tls = Object.assign({}, opts.tls);
-			opts.tls.caDer = opts.tls.caDer.toString('base64') as any;
-		}
-
 		NativeMqtt.connect(this.id, this.url, opts, (err: string) => {
 			if (err) {
 				callback(new Error(err));
