@@ -55,10 +55,6 @@ class MqttClient {
     void connect(final String host, final ReadableMap options, Callback callback) {
         connectCallback.set(callback);
 
-
-        Log.e(TAG,"Lib host: " + host);
-
-
         try {
             this.client.set(new MqttAsyncClient(host, options.getString("clientId"), new MemoryPersistence()));
 
@@ -78,8 +74,6 @@ class MqttClient {
 
             if (options.hasKey("tls")) {
                 ReadableMap tlsOptions = options.getMap("tls");
-                Log.e(TAG,"Lib tlsOptions caDer: " + tlsOptions.getString("caDer"));
-                Log.e(TAG,"Lib tlsOptions cert: " + tlsOptions.getString("cert"));
 
                 String ca = tlsOptions.hasKey("caDer") ? tlsOptions.getString("caDer") : null;
                 String cert = tlsOptions.hasKey("cert") ? tlsOptions.getString("cert") : null;
@@ -97,9 +91,7 @@ class MqttClient {
 
                 if (ca != null) {
                     CertificateFactory cf = CertificateFactory.getInstance("X.509");
-                    Log.e(TAG,"Lib ca: " + ca);
-                    InputStream caInput = new ByteArrayInputStream(Base64.decode(ca, Base64.DEFAULT));
-                    Log.e(TAG,"Lib caInput: " + caInput);
+                    ByteArrayInputStream caInput = new ByteArrayInputStream(ca.getBytes());
 
                     Certificate caCert = cf.generateCertificate(caInput);
                     caInput.close();
