@@ -69,7 +69,12 @@ client.connect({
           key: 'key in Buffer, in my case from BA endpoint',
         },
         enableSsl: true,
-}, err => {});
+}, err => {
+	// You can output errors about connection here
+	if (err) {
+          console.log('Error while connecting!: ', err?.message);
+        }
+});
 
 client.on(Mqtt.Event.Message, (topic: string, message: Buffer) => {
 	console.log('Mqtt Message:', topic, message.toString());
