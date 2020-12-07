@@ -16,11 +16,11 @@ It supports most of the features supported by these libraries. Tradeoffs have be
 ## Getting started
 
 ```
-$ npm install FrozenPyrozen/rn-native-mqtt --save
+$ npm i --save github:FrozenPyrozen/rn-native-mqtt
 
 -- or -- 
 
-$ yarn add FrozenPyrozen/rn-native-mqtt
+$ yarn add github:FrozenPyrozen/rn-native-mqtt
 ```
 
 ## Installation
