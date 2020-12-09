@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  s.dependency "Starscream", "~> 3.0.2"
+  s.dependency "Starscream", "~> 3.1.1"
 end
 
