@@ -96,30 +96,31 @@ export class Client {
 		});
 	}
 
-	public connect(options: ConnectionOptions, callback: (error?: Error) => void) {
-		if (this.closed) {
-			throw new Error('client already closed');
-		}
 
-		if (this.connected) {
-			throw new Error('client already connected');
-		}
 
-		const opts: ConnectionOptions = Object.assign({}, options);
-		if (opts.tls && opts.tls.p12) {
-			opts.tls = Object.assign({}, opts.tls);
-			opts.tls.p12 = opts.tls.p12.toString('base64') as any;
-		}
-
-		NativeMqtt.connect(this.id, this.url, opts, (err: string) => {
-			if (err) {
-				callback(new Error(err));
-				return;
+	public connect(options: ConnectionOptions): Promise<void> {
+		return new Promise((resolve, reject) => {
+			if (this.closed) {
+				reject(new Error('client already closed'));
 			}
-
-			this.connected = true;
-			callback();
-		});
+			if (this.connected) {
+				reject(new Error('client already connected'));
+			}
+			const opts = Object.assign({}, options);
+			if (opts.tls && opts.tls.p12) {
+				opts.tls = Object.assign({}, opts.tls);
+				opts.tls.p12 = opts.tls.p12.toString('base64') as any;
+			}
+			NativeMqtt.connect(this.id, this.url, opts, (err) => {
+				if (err) {
+					reject(new Error(err));
+					return;
+				}
+				console.log('Connected to NativeMqtt!');
+				this.connected = true;
+				resolve();
+			});
+		})
 	}
 
 	public subscribe(topics: string[], qos: number[]) {

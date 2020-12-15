@@ -18,7 +18,7 @@ It supports most of the features supported by these libraries. Tradeoffs have be
 ```
 $ npm i --save github:FrozenPyrozen/rn-native-mqtt
 
--- or -- 
+-- or --
 
 $ yarn add github:FrozenPyrozen/rn-native-mqtt
 ```
@@ -61,7 +61,8 @@ import * as Mqtt from 'react-native-native-mqtt';
 
 const client = new Mqtt.Client('[SCHEME]://[URL]:[PORT]');
 
-client.connect({
+// Promisifyed connect
+await client.connect({
 	clientId: 'CLIENT_ID',
 	tls: {
           caDer: 'ca certificate in Buffer, in my case Amazon root certificate, which I get from BA endpoint',
@@ -69,11 +70,6 @@ client.connect({
           key: 'key in Buffer, in my case from BA endpoint',
         },
         enableSsl: true,
-}, err => {
-	// You can output errors about connection here
-	if (err) {
-          console.log('Error while connecting!: ', err?.message);
-        }
 });
 
 client.on(Mqtt.Event.Message, (topic: string, message: Buffer) => {
