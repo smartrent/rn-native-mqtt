@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,swift}"
   s.requires_arc = true
-  s.framework    = "Foundation"
+  s.ios.framework    = "Foundation"
 
   s.dependency "React"
   s.dependency "Starscream", "~> 3.0.6"
