@@ -7,5 +7,5 @@
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
 #import <CocoaAsyncSocket/GCDAsyncUdpSocket.h>
 
-#import "Libraries/CocoaMQTT/CocoaMQTT.h"
+#import "CocoaMQTT.h"
 
