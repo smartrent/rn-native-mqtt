@@ -11,7 +11,7 @@ This library uses the following native MQTT client libraries:
 
 It supports most of the features supported by these libraries. Tradeoffs have been made to keep the interface unified, so some features are not exposed if not supported in both libraries.
 
-### This fork instead original 100% working with mqtt TLS connection with AWS on Android!
+### This fork instead original 100% working with mqtt TLS connection with AWS on Android and IOS!
 
 ## Getting started
 
