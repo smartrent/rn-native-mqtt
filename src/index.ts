@@ -147,7 +147,7 @@ export class Client {
 		NativeMqtt.unsubscribe(this.id, topics);
 	}
 
-	public publish(topic: string, message: Buffer, qos: number = 0, retained: boolean = false) {
+	public publish(topic: string, message: string, qos: number = 0, retained: boolean = false) {
 		if (this.closed) {
 			throw new Error('client already closed');
 		}
@@ -156,15 +156,11 @@ export class Client {
 			throw new Error('client not connected');
 		}
 
-		NativeMqtt.publish(this.id, topic, message.toString('base64'), qos, retained);
+		const buf = Buffer.from(message, 'ascii');
+		
+		NativeMqtt.publish(this.id, topic, buf.toString('base64'), qos, retained);
 	}
 	
-	public publish(topic: string, message: string, qos: number = 0, retained: boolean = false) {
-		const buf = Buffer.from(message, 'ascii');
-
-		publish(topic, buf, qos, retained)
-	}
-
 	public disconnect() {
 		if (this.closed) {
 			throw new Error('client already closed');
