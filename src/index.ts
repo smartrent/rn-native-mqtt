@@ -158,6 +158,12 @@ export class Client {
 
 		NativeMqtt.publish(this.id, topic, message.toString('base64'), qos, retained);
 	}
+	
+	public publish(topic: string, message: string, qos: number = 0, retained: boolean = false) {
+		const buf = Buffer.from(message, 'ascii');
+
+		publish(topic, buf, qos, retained)
+	}
 
 	public disconnect() {
 		if (this.closed) {
