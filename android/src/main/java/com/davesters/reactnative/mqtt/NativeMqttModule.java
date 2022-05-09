@@ -85,4 +85,14 @@ public class NativeMqttModule extends ReactContextBaseJavaModule {
         clients.get(id).close();
         clients.remove(id);
     }
+
+    @ReactMethod
+    public void addListener(String eventName) {
+
+    }
+
+    @ReactMethod
+    public void removeListeners(Integer count) {
+
+    }
 }
